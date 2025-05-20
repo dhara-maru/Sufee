@@ -1,0 +1,267 @@
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Extensions
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <!--- basic page needs -->
+    <meta charset="utf-8">
+    <title>@ViewData["Title"] - Sufee</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/vendor.css">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- script -->
+    <script src="~/js/modernizr.js"></script>
+    <script defer src="~/js/fontawesome/all.min.js"></script>
+
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon.png">
+
+    @RenderSection("Styles", required: false)
+
+    <style>
+        html, body {
+            scroll-behavior: auto; /* Disable native smooth scroll to avoid conflicts */
+        }
+
+        p {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .follower-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.05s linear; /* Ultra-smooth follower dot */
+        }
+
+        .footer-logo {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body id="top">
+    <!-- Add follower dot element -->
+    <div id="follower-dot" class="follower-dot"></div>
+
+    <!-- header -->
+    <header class="s-header">
+        <div class="s-header__logo">
+            <a class="logo" href="index.html">
+                <img src="~/images/logo.png" alt="Homepage">
+            </a>
+        </div>
+
+        <div class="row s-header__navigation">
+            <nav class="s-header__nav-wrap">
+                <h3 class="s-header__nav-heading h6">Navigate to</h3>
+                <ul class="s-header__nav">
+                    <li><a href="Index" title="">Home</a></li>
+                    <li><a href="@Url.Action("Qawwali", "Home")">Qawwalis</a></li>
+                    @* <li><a href="@Url.Action("BlogDetails", "Home", new { id = 1 })">Blogs</a></li> *@
+                    <li><a href="@Url.Action("Ebook", "Home")">E-Books</a></li>
+                    <li><a href="/Home/About" title="">About</a></li>
+                    <li><a href="/Home/Contact" title="">Contact</a></li>
+                    <li class="has-children">
+                        <a href="#" title="">Account</a>
+                        <ul class="sub-menu">
+                            @if (string.IsNullOrEmpty(Context.Session.GetString("Username")))
+                            {
+                                <li><a href="/Home/Login">Login</a></li>
+                                <li><a href="/Home/Signup">Sign Up</a></li>
+                            }
+                            else
+                            {
+                                @if (string.Equals(Context.Session.GetString("Username"), "Admin", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    <li><a href="/Admin/Dashboard" title="Dashboard">Dashboard</a></li>
+                                }
+                                <li><a href="@Url.Action("Logout", "Home")">Logout</a></li>
+                            }
+                        </ul>
+                    </li>
+                    <li style="color: white !important">@(ViewData["WelcomeMessage"] as string ?? "")</li>
+                </ul>
+                <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
+            </nav>
+        </div>
+
+        <a class="s-header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+
+        <div class="s-header__search">
+            <div class="s-header__search-inner">
+                <div class="row wide">
+                    <form role="search" method="get" class="s-header__search-form" action="@Url.Action("Search", "Home")">
+                        <label>
+                            <span class="h-screen-reader-text">Search for:</span>
+                            <input type="search" class="s-header__search-field" placeholder="Search for..." value="" name="s" title="Search for:" autocomplete="off">
+                        </label>
+                        <input type="submit" class="s-header__search-submit" value="Search">
+                    </form>
+                    <a href="#0" title="Close Search" class="s-header__overlay-close">Close</a>
+                </div>
+            </div>
+        </div>
+
+        <a class="s-header__search-trigger" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.982 17.983"><path fill="#010101" d="M12.622 13.611l-.209.163A7.607 7.607 0 017.7 15.399C3.454 15.399 0 11.945 0 7.7 0 3.454 3.454 0 7.7 0c4.245 0 7.699 3.454 7.699 7.7a7.613 7.613 0 01-1.626 4.714l-.163.209 4.372 4.371-.989.989-4.371-4.372zM7.7 1.399a6.307 6.307 0 00-6.3 6.3A6.307 6.307 0 007.7 14c3.473 0 6.3-2.827 6.3-6.3a6.308 6.308 0 00-6.3-6.301z" /></svg>
+        </a>
+    </header>
+
+    <!-- main content -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- footer -->
+    <footer class="s-footer">
+        <div class="s-footer__main">
+            <div class="row">
+                <div class="column large-3 medium-6 tab-12 s-footer__info">
+                    <h5>About Sufee</h5>
+                    <p>
+                        Sufee is your digital sanctuary for exploring the mystical world of Sufi poetry, timeless verses, eBooks, and sacred expressions that echo the soul’s deepest longing.
+                    </p>
+                </div>
+                <div class="column large-2 medium-3 tab-6 s-footer__site-links">
+                    <h5>Site Links</h5>
+                    <ul>
+                        <li><a href="Index">Home</a></li>
+                        <li><a href="@Url.Action("BlogDetails", "Home", new { id = 1 })">Blogs</a></li>
+                        <li><a href="@Url.Action("Ebook", "Home")">E-Books</a></li>
+                        <li><a href="Home/About">About Us</a></li>
+                        <li><a href="Home/Contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="column large-2 medium-3 tab-6 s-footer__social-links">
+                    <h5>Follow Us</h5>
+                    <ul>
+                        <li><a href="#0">Twitter</a></li>
+                        <li><a href="#0">Facebook</a></li>
+                        <li><a href="#0">Dribbble</a></li>
+                        <li><a href="#0">Pinterest</a></li>
+                        <li><a href="#0">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="column large-3 medium-6 tab-12 s-footer__subscribe">
+                    <div class="footer-logo">
+                        <a class="logo" href="Index">
+                            <img src="~/images/logo.png" alt="Sufee">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="column">
+                    <div class="ss-copyright">
+                        <span>© 2025</span>
+                        <span>Created by <a href="#">Dhara M.</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15"><path d="M7.5 1.5l.354-.354L7.5.793l-.354.353.354.354zm-.354.354l4 4 .708-.708-4-4-.708.708zm0-.708l-4 4 .708.708 4-4-.708-.708zM7 1.5V14h1V1.5H7z" fill="currentColor"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Java Script -->
+    <script src="~/js/jquery-3.5.0.min.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/main.js"></script>
+
+    <script>
+        // Ultra-smooth scrolling
+        function smoothScroll(target, duration) {
+            const targetElement = document.querySelector(target);
+            if (!targetElement) return;
+
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function ease(t, b, c, d) {
+                // Ease-in-out quadratic
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = ease(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (
+                    this.getAttribute('href').startsWith('#') &&
+                    location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') &&
+                    location.hostname === this.hostname
+                ) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    smoothScroll(targetId, 1000); // 1000ms for super smooth scrolling
+                }
+            });
+        });
+
+        // Ultra-smooth follower dot
+        const followerDot = document.getElementById('follower-dot');
+        let mouseX = 0, mouseY = 0;
+        let dotX = 0, dotY = 0;
+        const lerpFactor = 0.15; // Higher value for faster, lower for smoother
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateDot() {
+            dotX += (mouseX - dotX) * lerpFactor;
+            dotY += (mouseY - dotY) * lerpFactor;
+            followerDot.style.transform = `translate(${dotX - 6}px, ${dotY - 6}px)`;
+            requestAnimationFrame(animateDot);
+        }
+
+        animateDot();
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

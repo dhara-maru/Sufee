@@ -1,0 +1,119 @@
+﻿@model SUFEEASP.Model.Blog
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<section class="s-content">
+    <div class="row">
+        <div class="column large-12">
+
+            <article class="s-content__entry format-standard">
+
+                <!-- Main Blog Image -->
+                <div class="s-content__media">
+                    <div class="s-content__post-thumb">
+                        <img src="@Model.Blogimg1" alt="@Model.Title"
+                             srcset="@Model.Blogimg1 2100w,
+                                     @Model.Blogimg1 1050w,
+                                     @Model.Blogimg1 525w"
+                             sizes="(max-width: 2100px) 100vw, 2100px" />
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <div class="s-content__entry-header">
+                    <h1 class="s-content__title s-content__title--post">@Model.Title</h1>
+                </div>
+
+                <!-- Content -->
+                <div class="s-content__primary">
+                    <div class="s-content__entry-content">
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Description))
+                        {
+                            <p class="lead">@Model.Description</p>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Paragraph1))
+                        {
+                            <p>@Model.Paragraph1</p>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Paragraph2))
+                        {
+                            <p>@Model.Paragraph2</p>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Blogimg2))
+                        {
+                            <p>
+                                <img src="@Model.Blogimg2" alt="Blog Image"
+                                     srcset="@Model.Blogimg2 2100w,
+                                             @Model.Blogimg2 1050w,
+                                             @Model.Blogimg2 525w"
+                                     sizes="(max-width: 2100px) 100vw, 2100px" />
+                            </p>
+                        }
+
+                    </div>
+
+                    <!-- Meta Info -->
+                    <div class="s-content__entry-meta">
+                        <div class="entry-author meta-blk">
+                          
+                            <div class="byline">
+                                <span class="bytext">Posted By</span> <br />
+                                <a href="#">@Model.Author</a> <br /><br />
+                            </div>
+                        </div>
+
+                        <div class="meta-bottom">
+                            <div class="entry-cat-links meta-blk">
+                                <div class="cat-links">
+                                    <span>In</span>
+                                    <a href="#">@Model.Category</a> <br />
+                                </div>
+
+                                <span>On</span> @Model.Postdate <br /><br />
+                            </div>
+
+                            <div class="entry-tags meta-blk">
+                                <span class="tagtext">Tags</span> <br />
+                                @foreach (var tag in Model.Tags.Split(','))
+                                {
+                                    <a href="#">@tag.Trim()</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prev / Next Links -->
+                    <div class="s-content__pagenav">
+                        @if (ViewBag.PrevBlog != null)
+                        {
+                            <div class="prev-nav">
+                                <a href="@Url.Action("BlogDetails", "Home", new { id = ViewBag.PrevBlog.ID })" rel="prev">
+                                    <span>Previous</span>
+                                    @ViewBag.PrevBlog.Title
+                                </a>
+                            </div>
+                        }
+
+                        @if (ViewBag.NextBlog != null)
+                        {
+                            <div class="next-nav">
+                                <a href="@Url.Action("BlogDetails", "Home", new { id = ViewBag.NextBlog.ID })" rel="next">
+                                    <span>Next</span>
+                                    @ViewBag.NextBlog.Title
+                                </a>
+                            </div>
+                        }
+                    </div>
+
+                </div> <!-- s-content__primary -->
+
+            </article> <!-- end entry -->
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,88 @@
+﻿@page
+@model SUFEEASP.Pages.Admin.Writers.CreateModel
+
+@{
+    ViewData["Title"] = "Add Writer";
+}
+
+<div style="margin: 20px; margin-left: 40px; padding: 20px; padding-top: 10px; max-width: 100%; box-sizing: border-box; display: flex; justify-content: center;">
+    <div style="max-width: 800px; width: 100%;">
+        <h1 style="font-size: 2rem; margin-bottom: 15px;">Add New Writer</h1>
+   
+        <form method="post" style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div asp-validation-summary="ModelOnly" class="text-danger" style="width: 100%; font-size: 1rem;"></div>
+
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group">
+                    <label asp-for="Writer.City" class="control-label"></label>
+                    <input asp-for="Writer.City" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Writer.City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Writer.Name" class="control-label"></label>
+                    <input asp-for="Writer.Name" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Writer.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Writer.Desc1" class="control-label"></label>
+                    <input asp-for="Writer.Desc1" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Writer.Desc1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Writer.Desc2" class="control-label"></label>
+                    <input asp-for="Writer.Desc2" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Writer.Desc2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Writer.Imgurl" class="control-label"></label>
+                    <input asp-for="Writer.Imgurl" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Writer.Imgurl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Writer.DOB" class="control-label"></label>
+                    <input asp-for="Writer.DOB" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Writer.DOB" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group">
+                    <label asp-for="Writer.DOD" class="control-label"></label>
+                    <input asp-for="Writer.DOD" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Writer.DOD" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Writer.WriterType" class="control-label"></label>
+                    <input asp-for="Writer.WriterType" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Writer.WriterType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Writer.Quote" class="control-label"></label>
+                    <input asp-for="Writer.Quote" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Writer.Quote" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Writer.Famous" class="control-label"></label>
+                    <textarea asp-for="Writer.Famous" class="form-control" rows="5" style="width: 100%; box-sizing: border-box; white-space: pre-wrap;"></textarea>
+                    <span asp-validation-for="Writer.Famous" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Writer.ViewMore" class="control-label"></label>
+                    <input asp-for="Writer.ViewMore" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Writer.ViewMore" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div style="width: 100%; display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                <input type="submit" value="Create" class="btn btn-primary" style="padding: 10px 20px; font-size: 1.5rem;" />
+                <a asp-page="Index" class="btn btn-secondary" style="padding: 10px 20px; font-size: 1.5rem;  text-decoration: none;">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

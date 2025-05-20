@@ -1,0 +1,84 @@
+﻿@page
+@model SUFEEASP.Pages.Admin.Blogs.EditModel
+
+@{
+    ViewData["Title"] = "Edit Blog";
+}
+
+<div style="margin: 20px; margin-left: 40px; padding: 20px; padding-top: 10px; max-width: 100%; box-sizing: border-box; display: flex; justify-content: center;">
+    <div style="max-width: 800px; width: 100%;">
+        <h1 style="font-size: 2rem; margin-bottom: 15px;">Edit Blog</h1>
+
+        <form method="post" style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div asp-validation-summary="ModelOnly" class="text-danger" style="width: 100%; font-size: 1rem;"></div>
+            <input type="hidden" asp-for="Blog.ID" />
+
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group">
+                    <label asp-for="Blog.Title" class="control-label"></label>
+                    <input asp-for="Blog.Title" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Blog.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Blog.Description" class="control-label"></label>
+                    <input asp-for="Blog.Description" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Blog.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Blog.Blogimg1" class="control-label"></label>
+                    <input asp-for="Blog.Blogimg1" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Blog.Blogimg1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Blog.Author" class="control-label"></label>
+                    <input asp-for="Blog.Author" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Blog.Author" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Blog.Paragraph1" class="control-label"></label>
+                    <input asp-for="Blog.Paragraph1" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Blog.Paragraph1" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group">
+                    <label asp-for="Blog.Paragraph2" class="control-label"></label>
+                    <input asp-for="Blog.Paragraph2" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Blog.Paragraph2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Blog.Blogimg2" class="control-label"></label>
+                    <input asp-for="Blog.Blogimg2" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Blog.Blogimg2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Blog.Category" class="control-label"></label>
+                    <input asp-for="Blog.Category" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Blog.Category" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Blog.Postdate" class="control-label"></label>
+                    <input asp-for="Blog.Postdate" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Blog.Postdate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Blog.Tags" class="control-label"></label>
+                    <input asp-for="Blog.Tags" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Blog.Tags" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div style="width: 100%; display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                <input type="submit" value="Save" class="btn btn-primary" style="padding: 10px 20px; font-size: 1.5rem; " />
+                <a asp-page="./Index" class="btn btn-secondary" style="padding: 10px 20px; font-size: 1.5rem;  text-decoration: none;">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

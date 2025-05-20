@@ -1,0 +1,81 @@
+﻿@model SUFEEASP.Model.Qawwali
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<section class="s-content">
+    <div class="row">
+        <div class="column large-12">
+
+            <article class="s-content__entry format-standard">
+
+
+                <!-- Title -->
+                <div class="s-content__entry-header" style="margin-top:-20px">
+                    <h1 class="s-content__title s-content__title--post">@Model.Title</h1>
+                    <h4 style="text-align:center; margin:-10px">By @Model.Poetname</h4>
+                </div>
+
+
+                <span class="bytext" style="font-size:20px">Audio : </span>
+                <!-- Audio Player -->
+                @if (!string.IsNullOrWhiteSpace(Model.Audio))
+                {
+                    <div class="s-content__audio" style="margin: 30px 0;">
+                        <audio controls style="width: 100%;">
+                            <source src="@Model.Audio" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                }
+
+                <!-- YouTube Embed -->
+                @if (!string.IsNullOrWhiteSpace(Model.Youtubeurl))
+                {
+                    <div class="s-content__video" style="margin-bottom: 30px;">
+                        <iframe width="100%" height="400" src="@Model.Youtubeurl"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                }
+
+                <!-- Description / Lyrics -->
+                
+
+                <div class="s-content__primary">
+                    <div class="s-content__entry-content">
+
+                 
+                        @if (!string.IsNullOrWhiteSpace(Model.Description))
+                        {
+                            <h4>Meaning</h4>
+                            <p class="lead">@Model.Description</p>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Lyrics))
+                        {
+                            <h4>Lyrics</h4>
+                            <p>@Html.Raw(Model.Lyrics.Replace("\n", "<br />"))</p>
+
+                        }
+
+                    </div>
+
+                    <!-- Meta Info -->
+                    <div class="s-content__entry-meta">
+                        <div class="entry-author meta-blk">
+                            <div class="byline">
+                                <span class="bytext" style="font-size:20px">Written By</span><br />
+                                <a href="#" style="font-size:20px">@Model.Poetname</a><br /><br />
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- s-content__primary -->
+
+            </article> <!-- end entry -->
+
+        </div>
+    </div>
+</section>

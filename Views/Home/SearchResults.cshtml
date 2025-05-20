@@ -1,0 +1,199 @@
+﻿@model SUFEEASP.Model.SearchViewModel
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<h1 style="text-align: center; padding-top: 68px; margin-bottom: 20px;">Search Results</h1>
+
+@if (Model.Blogs.Count == 0 && Model.Ebooks.Count == 0 && Model.Qawwalis.Count == 0 && Model.Writers.Count == 0)
+{
+    <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 6px; margin: 20px 0;">
+        No results found for your search.
+    </div>
+}
+else
+{
+    @if (Model.Qawwalis.Any())
+    {
+        <section class="s-content s-content--no-top-padding">
+            <h2 class="sectionheading" style="text-align: center; padding-top: 68px; margin-bottom: -40px;">
+                Qawwalis
+            </h2>
+            <div class="s-bricks">
+                <div class="masonry">
+                    <div class="bricks-wrapper h-group">
+                        <div class="grid-sizer"></div>
+                        <div class="lines"><span></span><span></span><span></span></div>
+
+                        @foreach (var q in Model.Qawwalis)
+                        {
+                            <article class="brick entry" style="display: flex; flex-direction: column; justify-content: space-between;">
+                                <div class="entry__thumb" style="max-height: 230px; overflow: hidden;">
+                                    <a href="@Url.Action("QawwaliDetails", "Home", new { id = q.ID })">
+                                        <img src="@q.Imgurl" alt="@q.Title" style="width: 100%; height: auto; object-fit: cover;" />
+                                    </a>
+                                </div>
+                                <div class="entry__text" style="flex: 1; display: flex; flex-direction: column;">
+                                    <div>
+                                        <div class="entry__header">
+                                            <h1 class="entry__title" style="font-size: 18px; min-height: 60px;">
+                                                <a href="@Url.Action("QawwaliDetails", "Home", new { id = q.ID })">@q.Title</a>
+                                            </h1>
+                                            <div class="entry__meta">
+                                                <span class="byline">
+                                                    Poet:
+                                                    <span class="author"><a href="#">@q.Poetname</a></span>
+                                                </span>
+                                                <span class="cat-links"><a href="@Url.Action("QawwaliDetails", "Home", new { id = q.ID })">Listen Now</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="entry__more-link" href="@Url.Action("QawwaliDetails", "Home", new { id = q.ID })">View Qawwali</a>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+    @if (Model.Writers.Any())
+    {
+        <section class="s-content s-content--no-top-padding">
+            <h2 class="sectionheading" style="text-align: center; padding-top: 68px; margin-bottom: -40px;">
+                Writers
+            </h2>
+            <div class="s-bricks">
+                <div class="masonry">
+                    <div class="bricks-wrapper h-group">
+                        <div class="grid-sizer"></div>
+                        <div class="lines"><span></span><span></span><span></span></div>
+
+                        @foreach (var w in Model.Writers)
+                        {
+                            <article class="brick entry" style="display: flex; flex-direction: column; justify-content: space-between;">
+                                <div class="entry__thumb" style="max-height: 230px; overflow: hidden;">
+                                    <a href="@Url.Action("WriterDetails", "Home", new { id = w.ID })">
+                                        <img src="@w.Imgurl" alt="@w.Name" style="width: 100%; height: auto; object-fit: cover;" />
+                                    </a>
+                                </div>
+                                <div class="entry__text" style="flex: 1; display: flex; flex-direction: column;">
+                                    <div>
+                                        <div class="entry__header">
+                                            <h1 class="entry__title" style="font-size: 18px; min-height: 60px;">
+                                                <a href="@Url.Action("WriterDetails", "Home", new { id = w.ID })">@w.Name</a>
+                                            </h1>
+                                            <div class="entry__meta">
+                                                <span class="byline">
+                                                    City:
+                                                    <span class="author"><a href="#">@w.City</a></span>
+                                                </span>
+                                                <span class="cat-links"><a href="@Url.Action("WriterDetails", "Home", new { id = w.ID })">Read More</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="entry__more-link" href="@Url.Action("WriterDetails", "Home", new { id = w.ID })">View Writer</a>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+    @if (Model.Ebooks.Any())
+    {
+        <section class="s-content s-content--no-top-padding">
+            <h2 class="sectionheading" style="text-align: center; padding-top: 68px; margin-bottom: -40px;">
+                Ebooks
+            </h2>
+            <div class="s-bricks">
+                <div class="masonry">
+                    <div class="bricks-wrapper h-group">
+                        <div class="grid-sizer"></div>
+                        <div class="lines"><span></span><span></span><span></span></div>
+
+                        @foreach (var book in Model.Ebooks)
+                        {
+                            <article class="brick entry" style="display: flex; flex-direction: column; justify-content: space-between;">
+                                <div class="entry__thumb" style="max-height: 230px; overflow: hidden;">
+                                    <a href="@book.Booklink" class="thumb-link" target="_blank">
+                                        <img src="@book.Imgurl" alt="@book.Name" style="width: 100%; height: auto; object-fit: cover;" />
+                                    </a>
+                                </div>
+                                <div class="entry__text" style="flex: 1; display: flex; flex-direction: column;">
+                                    <div>
+                                        <div class="entry__header">
+                                            <h1 class="entry__title" style="font-size: 18px; min-height: 60px;">
+                                                <a href="@book.Booklink" target="_blank">@book.Name</a>
+                                            </h1>
+                                            <div class="entry__meta">
+                                                <span class="byline">
+                                                    By:
+                                                    <span class="author"><a href="#">@book.Author</a></span>
+                                                </span>
+                                                <span class="cat-links"><a href="#">E-Book</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="entry__more-link" href="@book.Booklink" target="_blank">View E-Book</a>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+    @if (Model.Blogs.Any())
+    {
+        <section class="s-content s-content--no-top-padding">
+            <h2 class="sectionheading" style="text-align: center; padding-top: 68px; margin-bottom: -40px;">
+                Blogs
+            </h2>
+            <div class="s-bricks">
+                <div class="masonry">
+                    <div class="bricks-wrapper h-group">
+                        <div class="grid-sizer"></div>
+                        <div class="lines"><span></span><span></span><span></span></div>
+
+                        @foreach (var blog in Model.Blogs)
+                        {
+                            <article class="brick entry" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; min-height: 420px; border: 1px solid #eee; padding: 10px;">
+                                <div class="entry__thumb" style="height: 200px; overflow: hidden; border-radius: 6px;">
+                                    <a href="@Url.Action("BlogDetails", "Home", new { id = blog.ID })">
+                                        <img src="@blog.Blogimg1" alt="@blog.Title" style="width: 100%; height: 100%; object-fit: cover;" />
+                                    </a>
+                                </div>
+                                <div class="entry__text" style="flex-grow: 1; display: flex; flex-direction: column; margin-top: 10px;">
+                                    <div>
+                                        <div class="entry__header">
+                                            <h1 class="entry__title" style="font-size: 18px; min-height: 60px;">
+                                                <a href="@Url.Action("BlogDetails", "Home", new { id = blog.ID })">@blog.Title</a>
+                                            </h1>
+                                            <div class="entry__meta">
+                                                <span class="byline">
+                                                    Author:
+                                                    <span class="author"><a href="@Url.Action("BlogDetails", "Home", new { id = blog.ID })">@blog.Author</a></span>
+                                                </span>
+                                                <span class="cat-links">
+                                                    <a href="@Url.Action("BlogDetails", "Home", new { id = blog.ID })">Blog</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <a class="entry__more-link" href="@Url.Action("BlogDetails", "Home", new { id = blog.ID })" style="margin-top: auto;">Read Blog</a>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}

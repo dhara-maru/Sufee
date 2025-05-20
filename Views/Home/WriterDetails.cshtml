@@ -1,0 +1,112 @@
+﻿@model SUFEEASP.Model.Writer
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<section class="s-content">
+    <div class="row">
+        <div class="column large-12">
+
+            <article class="s-content__entry format-standard">
+
+                <!-- Main Image -->
+                <div class="s-content__media">
+                    <div class="s-content__post-thumb">
+                        <img src="@Model.Imgurl" alt="@Model.Name"
+                             srcset="@Model.Imgurl 2100w,
+                                     @Model.Imgurl 1050w,
+                                     @Model.Imgurl 525w"
+                             sizes="(max-width: 2100px) 100vw, 2100px" />
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <div class="s-content__entry-header">
+                    <h1 class="s-content__title s-content__title--post">@Model.Name</h1>
+                </div>
+
+                <!-- Content -->
+                <div class="s-content__primary">
+                    <div class="s-content__entry-content">
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Desc1))
+                        {
+                            <p class="lead">@Model.Desc1</p>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Desc2))
+                        {
+                            <p>@Model.Desc2</p>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Quote))
+                        {
+                            <blockquote style="font-style: italic;">“@Model.Quote” <br /> ~ @Model.Name</blockquote>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Famous))
+                        {
+                            <h4>Famous for:</h4>
+                            <p>@Html.Raw(Model.Famous.Replace("\n", "<br />"))</p>
+
+                        }
+
+                    </div>
+
+                    <!-- Meta Info -->
+                    <div class="s-content__entry-meta">
+                        <div class="entry-author meta-blk">
+                            <div class="byline">
+                                <span class="bytext">Writer Type</span><br />
+                                <a href="#">@Model.WriterType</a><br /><br />
+                            </div>
+                        </div>
+
+                        <div class="meta-bottom">
+                            <div class="entry-cat-links meta-blk">
+                                <div class="cat-links">
+                                    <span>City</span> <br />
+                                    <a href="#">@Model.City</a><br />
+                                </div> <br />
+
+                                <span>Born</span> <br /> @Model.DOB<br />
+                                <span>Died</span> <br /> @Model.DOD<br /><br />
+                            </div>
+
+                            @* <div class="entry-tags meta-blk"> *@
+                            @*     <span class="tagtext">Famous For</span><br /> *@
+                            @*     <a href="#">@Model.Famous</a> *@
+                            @* </div> *@
+                        </div>
+                    </div>
+
+                    <!-- Prev / Next Links -->
+                    <div class="s-content__pagenav">
+                        @if (ViewBag.PrevWriter != null)
+                        {
+                            <div class="prev-nav">
+                                <a href="@Url.Action("WriterDetails", "Home", new { id = ViewBag.PrevWriter.ID })" rel="prev">
+                                    <span>Previous</span>
+                                    @ViewBag.PrevWriter.Name
+                                </a>
+                            </div>
+                        }
+
+                        @if (ViewBag.NextWriter != null)
+                        {
+                            <div class="next-nav">
+                                <a href="@Url.Action("WriterDetails", "Home", new { id = ViewBag.NextWriter.ID })" rel="next">
+                                    <span>Next</span>
+                                    @ViewBag.NextWriter.Name
+                                </a>
+                            </div>
+                        }
+                    </div>
+
+                </div> <!-- s-content__primary -->
+
+            </article> <!-- end entry -->
+
+        </div>
+    </div>
+</section>

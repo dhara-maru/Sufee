@@ -1,0 +1,79 @@
+﻿@model List<SUFEEASP.Model.Ebook>
+@{
+    ViewData["Title"] = "E-Books";
+}
+
+<!-- AOS CSS (Make sure these are included in your layout or page) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+<section class="s-content s-content--no-top-padding">
+    <h2 class="sectionheading" style="text-align: center; padding-top: 68px; margin-bottom: -40px;">
+        Urdu E-Books on Sufee
+    </h2>
+    <div class="s-bricks">
+        <div class="masonry">
+            <div class="bricks-wrapper h-group">
+                <div class="grid-sizer"></div>
+
+                <div class="lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var book in Model)
+                    {
+                        <article class="brick entry" data-aos="fade-up"
+                                 style="display: flex; flex-direction: column; justify-content: space-between; height: 500px;">
+
+                            <div class="entry__thumb" style="height: 270px; overflow: hidden; border-radius: 6px;">
+                                <a href="@book.Booklink" class="thumb-link" target="_blank">
+                                    <img src="@book.Imgurl"
+                                         alt="@book.Name"
+                                         style="width: 100%; height: 100%; object-fit: cover;" />
+                                </a>
+                            </div>
+
+                            <div class="entry__text" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; margin-top: 10px;">
+                                <div>
+                                    <div class="entry__header">
+                                        <h1 class="entry__title" style="font-size: 18px; min-height: 60px;">
+                                            <a href="@book.Booklink" target="_blank">@book.Name</a>
+                                        </h1>
+
+                                        <div class="entry__meta">
+                                            <span class="byline">
+                                                By:
+                                                <span class="author"><a href="#">@book.Author</a></span>
+                                            </span>
+                                            <span class="cat-links"><a href="#">E-Book</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a class="entry__more-link" href="@book.Booklink" target="_blank"
+                                   style="margin-top: auto; color: #007BFF;">View E-Book</a>
+                            </div>
+                        </article>
+
+
+                    }
+                }
+                else
+                {
+                    <p style="text-align: center; margin-top: 40px;">No e-books available at the moment.</p>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        AOS.init();
+    });
+</script>

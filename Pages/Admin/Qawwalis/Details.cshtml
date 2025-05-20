@@ -1,0 +1,53 @@
+﻿@page
+@model SUFEEASP.Pages.Admin.Qawwalis.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div style="margin: 20px; margin-left: 40px; padding: 20px; padding-top: 10px; max-width: 100%; box-sizing: border-box; display: flex; justify-content: center;">
+    <div style="max-width: 800px; width: 100%;">
+        <h1 style="font-size: 2rem; margin-bottom: 15px;">Qawwali Details</h1>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Qawwali.Title)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Qawwali.Title)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Qawwali.Poetname)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Qawwali.Poetname)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Qawwali.Youtubeurl)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Qawwali.Youtubeurl)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Qawwali.Imgurl)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Qawwali.Imgurl)</dd>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Qawwali.Audio)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Qawwali.Audio)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Qawwali.Lyrics)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Qawwali.Lyrics)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Qawwali.Description)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Qawwali.Description)</dd>
+                </div>
+            </div>
+
+            <div style="width: 100%; display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                <a asp-page="./Edit" asp-route-id="@Model.Qawwali.ID" class="btn btn-primary" style="padding: 10px 20px; font-size: 1rem; width: 150px; text-decoration: none;">Edit</a>
+                <a asp-page="./Index" class="btn btn-secondary" style="padding: 10px 20px; font-size: 1rem; width: 150px; text-decoration: none;">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

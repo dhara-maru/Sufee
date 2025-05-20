@@ -1,0 +1,65 @@
+﻿@page
+@model SUFEEASP.Pages.Admin.Blogs.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div style="margin: 20px; margin-left: 40px; padding: 20px; padding-top: 10px; max-width: 100%; box-sizing: border-box; display: flex; justify-content: center;">
+    <div style="max-width: 800px; width: 100%;">
+        <h1 style="font-size: 2rem; margin-bottom: 15px;">Blog Details</h1>
+     
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black;text-decoration: underline">@Html.DisplayNameFor(model => model.Blog.Title)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Blog.Title)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Blog.Description)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Blog.Description)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Blog.Blogimg1)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Blog.Blogimg1)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Blog.Author)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Blog.Author)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Blog.Paragraph1)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Blog.Paragraph1)</dd>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Blog.Paragraph2)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Blog.Paragraph2)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Blog.Blogimg2)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Blog.Blogimg2)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color:Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Blog.Category)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Blog.Category)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color: Black; text-decoration: underline">@Html.DisplayNameFor(model => model.Blog.Postdate)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Blog.Postdate)</dd>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <dt style="font-weight: 500; font-size: 1.9rem; color:Black;text-decoration: underline">@Html.DisplayNameFor(model => model.Blog.Tags)</dt>
+                    <dd style="font-size: 1.9rem; color: #495057;">@Html.DisplayFor(model => model.Blog.Tags)</dd>
+                </div>
+            </div>
+
+            <div style="width: 100%; display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                <a asp-page="./Edit" asp-route-id="@Model.Blog.ID" class="btn btn-primary" style="padding: 10px 20px; font-size: 1rem; width: 150px; text-decoration: none;">Edit</a>
+                <a asp-page="./Index" class="btn btn-secondary" style="padding: 10px 20px; font-size: 1rem; width: 150px; text-decoration: none;">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

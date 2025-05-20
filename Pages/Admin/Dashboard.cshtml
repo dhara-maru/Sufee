@@ -1,0 +1,69 @@
+﻿@page
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div style="margin: 20px; margin-left: 40px; padding: 20px; padding-top: 10px; max-width: 100%; box-sizing: border-box; display: flex; justify-content: center;">
+    <div style="max-width: 1000px; width: 100%;">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">Admin Dashboard</h2>
+
+        <section style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+            <!-- Blogs Card -->
+            <article style="flex: 1 1 45%; max-width: 45%; min-width: 300px; display: flex; flex-direction: column; justify-content: space-between; height: 420px; border: 1px solid #eee; border-radius: 6px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <div style="height: 180px; overflow: hidden; border-radius: 6px;">
+                    <a href="http://localhost:5072/Admin/Blogs">
+                        <img src="https://images.unsplash.com/photo-1710417900303-479dc7147dab?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Blogs" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </a>
+                </div>
+                <div style="flex-grow: 1; display: flex; flex-direction: column; margin-top: 10px; text-align: center;">
+                    <h3 style="font-size: 2rem; margin-bottom: 10px;">Blogs</h3>
+                    <p style="font-size: 1.7rem; color: #495057; margin-bottom: 15px;">Manage engaging blog posts.</p>
+                    <a href="http://localhost:5072/Admin/Blogs" class="btn btn-primary" style="padding: 10px 20px; font-size: 1rem; text-decoration: none; margin-top: auto;">View Blogs</a>
+                </div>
+            </article>
+
+            <!-- Ebooks Card -->
+            <article style="flex: 1 1 45%; max-width: 45%; min-width: 300px; display: flex; flex-direction: column; justify-content: space-between; height: 420px; border: 1px solid #eee; border-radius: 6px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <div style="height: 180px; overflow: hidden; border-radius: 6px;">
+                    <a href="http://localhost:5072/Admin/Ebooks">
+                        <img src="https://images.unsplash.com/photo-1485988412941-77a35537dae4?q=80&w=2096&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ebooks" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </a>
+                </div>
+                <div style="flex-grow: 1; display: flex; flex-direction: column; margin-top: 10px; text-align: center;">
+                    <h3 style="font-size: 2rem; margin-bottom: 10px;">Ebooks</h3>
+                    <p style="font-size: 1.7rem; color: #495057; margin-bottom: 15px;">Curate and update ebook collections.</p>
+                    <a href="http://localhost:5072/Admin/Ebooks" class="btn btn-primary" style="padding: 10px 20px; font-size: 1rem; text-decoration: none; margin-top: auto;">View Ebooks</a>
+                </div>
+            </article>
+
+            <!-- Writers Card -->
+            <article style="flex: 1 1 45%; max-width: 45%; min-width: 300px; display: flex; flex-direction: column; justify-content: space-between; height: 420px; border: 1px solid #eee; border-radius: 6px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <div style="height: 180px; overflow: hidden; border-radius: 6px;">
+                    <a href="http://localhost:5072/Admin/Writers">
+                        <img src="https://images.unsplash.com/photo-1594311436376-14cb76e46be5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Writers" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </a>
+                </div>
+                <div style="flex-grow: 1; display: flex; flex-direction: column; margin-top: 10px; text-align: center;">
+                    <h3 style="font-size: 2rem; margin-bottom: 10px;">Writers</h3>
+                    <p style="font-size: 1.7rem; color: #495057; margin-bottom: 15px;">Edit and showcase writer profiles.</p>
+                    <a href="http://localhost:5072/Admin/Writers" class="btn btn-primary" style="padding: 10px 20px; font-size: 1rem; text-decoration: none; margin-top: auto;">View Writers</a>
+                </div>
+            </article>
+
+            <!-- Qawwalis Card -->
+            <article style="flex: 1 1 45%; max-width: 45%; min-width: 300px; display: flex; flex-direction: column; justify-content: space-between; height: 420px; border: 1px solid #eee; border-radius: 6px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <div style="height: 180px; overflow: hidden; border-radius: 6px;">
+                    <a href="http://localhost:5072/Admin/Qawwalis">
+                        <img src="https://img.mensxp.com/media/content/2017/Sep/1400-1506003044.jpg" alt="Qawwalis" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </a>
+                </div>
+                <div style="flex-grow: 1; display: flex; flex-direction: column; margin-top: 10px; text-align: center;">
+                    <h3 style="font-size: 2rem; margin-bottom: 10px;">Qawwalis</h3>
+                    <p style="font-size: 1.7rem; color: #495057; margin-bottom: 15px;">Manage soulful Qawwali content.</p>
+                    <a href="http://localhost:5072/Admin/Qawwalis" class="btn btn-primary" style="padding: 10px 20px; font-size: 1rem; text-decoration: none; margin-top: auto;">View Qawwalis</a>
+                </div>
+            </article>
+        </section>
+    </div>
+</div>

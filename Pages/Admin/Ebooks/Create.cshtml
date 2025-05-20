@@ -1,0 +1,54 @@
+﻿@page
+@model SUFEEASP.Pages.Admin.Ebooks.CreateModel
+
+@{
+    ViewData["Title"] = "Add E-Books";
+}
+
+<div style="margin: 20px; margin-left: 40px; padding: 20px; padding-top: 10px; max-width: 100%; box-sizing: border-box; display: flex; justify-content: center;">
+    <div style="max-width: 800px; width: 100%;">
+        <h1 style="font-size: 2rem; margin-bottom: 15px;">Add E-Book</h1>
+       
+       
+        <form method="post" style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div asp-validation-summary="ModelOnly" class="text-danger" style="width: 100%; font-size: 1rem;"></div>
+
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group">
+                    <label asp-for="Ebook.Name" class="control-label"></label>
+                    <input asp-for="Ebook.Name" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Ebook.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ebook.Author" class="control-label"></label>
+                    <input asp-for="Ebook.Author" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Ebook.Author" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group">
+                    <label asp-for="Ebook.Imgurl" class="control-label"></label>
+                    <input asp-for="Ebook.Imgurl" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Ebook.Imgurl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ebook.Booklink" class="control-label"></label>
+                    <input asp-for="Ebook.Booklink" class="form-control" style="width: 100%; box-sizing: border-box;" />
+                    <span asp-validation-for="Ebook.Booklink" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div style="width: 100%; display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                <input type="submit" value="Create" class="btn btn-primary" style="padding: 10px 20px; font-size: 1.5rem;" />
+                <a asp-page="Index" class="btn btn-secondary" style="padding: 10px 20px; font-size: 1.5rem;text-decoration: none;">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
