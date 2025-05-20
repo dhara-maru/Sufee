@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SUFEEASP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f44a77428f527bfa909a348a495a271d5a7cc1ff")]
 [assembly: System.Reflection.AssemblyProductAttribute("SUFEEASP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SUFEEASP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
